@@ -7,3 +7,6 @@ class Holiday(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     
+    
+    def __unicode__(self):
+        return "Holiday for %s: %s - %s" % (self.user, self.start_date, self.end_date)
