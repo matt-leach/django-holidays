@@ -3,5 +3,6 @@ from django.contrib import admin
 
 urlpatterns = patterns('',
     url(r'^', include('core.urls')),
+    url(r'^holidays/', include('holidays.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )

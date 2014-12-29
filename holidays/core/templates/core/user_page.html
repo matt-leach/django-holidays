@@ -3,5 +3,9 @@
 <body>
 
 	<p>{{ user }}</p>
+	{% for holiday in user.holidays.all %}
+		{{ holiday }}
+	{% endfor %}
+	
 </body>
 </html>
