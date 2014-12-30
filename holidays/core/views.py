@@ -5,9 +5,11 @@ from django.http import HttpResponse
 class HomeView(TemplateView):
     template_name = "core/home.html"
     
+    
 class UserDetailView(DetailView):
     model = User
     template_name = "core/user_page.html"
+    
     
 class MeView(View):
     
