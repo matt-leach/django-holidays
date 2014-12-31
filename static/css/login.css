@@ -1,0 +1,46 @@
+#loginBox {
+	background-color: #FFFFFF;
+	height: 240px;
+	width: 400px;
+	position: fixed;
+    margin-left: -200px; /* half of width */
+    top: 100px;
+    left: 50%;
+    border: 1px solid black; 
+}
+
+#loginTable {
+	text-align: center;
+	width: 50%; 
+	margin: auto;
+	margin-top: 25px;
+}
+
+.loginInput {
+	height: 35px;
+	width: 250px;
+	margin: 4px;
+}
+
+
+#loginSubmit {
+	background-color: #3CD670;
+	color: black;
+	height: 35px;
+	width: 250px;
+	text-align: center;
+	border: none;
+	font-size: 15px;
+}
+
+#loginSubmit:hover {
+	background-color: #249E4E;
+}
+
+#loginErrors {
+	color: red;
+	height: 50px;
+	text-align: left;
+	font-size: 15px;
+	padding: 4px;
+}
