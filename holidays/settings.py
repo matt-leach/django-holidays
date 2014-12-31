@@ -81,8 +81,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
-
+STATICFILES_DIRS = (
+    os.path.join(os.path.dirname(BASE_DIR), "static"),
+)
 STATIC_URL = '/static/'
 
+STATIC_ROOT = '/home/django_apps/static/greyhounds/'
 
-LOGIN_REDIRECT_URL = '/user/'
+LOGIN_REDIRECT_URL = '/'
