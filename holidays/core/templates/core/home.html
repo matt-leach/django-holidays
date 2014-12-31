@@ -15,7 +15,16 @@
 		{% for holiday in user.holidays.all %}
 			<tr>
 				<td class="holidaysDate">{{ holiday.start_date }} - {{ holiday.end_date }}</td>
-				<td class="holidaysApproval"><button class="holidaysApprovalBox">APPROVED</td>
+				<td class="holidaysApproval">
+					{% if holiday.approved %}
+						<button class="holidaysButton holidaysApproved">APPROVED</button>
+					{% elif holiday.approved == None %}
+						<button class="holidaysButton holidaysWaiting">WAITING</button>
+					{% else %}
+						{# False #}
+						<button class="holidaysButton holidaysRejected">REJECTED</button>
+					{% endif %}
+				</td>
 			</tr>
 		{% endfor %}
 	</table>

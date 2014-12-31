@@ -32,13 +32,26 @@ h3 {
 	
 }
 
-.holidaysApprovalBox {
+.holidaysButton {
 	width: 150px;
 	height: 35px;
 	border-radius: 5px;
-	border: 1px solid #45C217;
-	background-color: #4FE319;
 	text-align: center;
 	vertical-align: middle;
 	outline: none;
+}
+
+.holidaysApproved {
+	background-color: #4FE319;
+	border: 1px solid green;
+}
+
+.holidaysWaiting {
+	background-color: #F7942A;
+	border: 1px solid orange;
+}
+
+.holidaysRejected {
+	background-color: #FC3721;
+	border: 1px solid red;
 }
