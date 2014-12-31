@@ -88,4 +88,5 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = '/home/django_apps/static/greyhounds/'
 
+LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
