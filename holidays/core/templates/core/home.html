@@ -4,6 +4,7 @@
 <div>
 	<h1>{% if user.first_name or user.last_name %}{{ user.first_name }} {{ user.last_name }}{% else %}{{ user.username }}{% endif %}</h1>
 	<h3>{{ user.email }}</h3>
+	<br><br>
 </div>
 
 <div>
@@ -11,23 +12,9 @@
 	{% if not user.holidays.all %}
 		No holiday taken
 	{% endif %}
-	<table class="holidaysTable">
-		{% for holiday in user.holidays.all %}
-			<tr>
-				<td class="holidaysDate">{{ holiday.start_date }} - {{ holiday.end_date }}</td>
-				<td class="holidaysApproval">
-					{% if holiday.approved %}
-						<button class="holidaysButton holidaysApproved">APPROVED</button>
-					{% elif holiday.approved == None %}
-						<button class="holidaysButton holidaysWaiting">WAITING</button>
-					{% else %}
-						{# False #}
-						<button class="holidaysButton holidaysRejected">REJECTED</button>
-					{% endif %}
-				</td>
-			</tr>
-		{% endfor %}
-	</table>
+	
+	{% include "holidays/holidayTable.html" %}
+	
 </div>
 
 
