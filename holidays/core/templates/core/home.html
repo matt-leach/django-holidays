@@ -1,6 +1,28 @@
 {% extends "core/base.html" %}
 
 {% block content %}
-<p> Hello {{user.username }}</p>
+<div>
+	<h1>{% if user.first_name or user.last_name %}{{ user.first_name }} {{ user.last_name }}{% else %}{{ user.username }}{% endif %}</h1>
+	<h3>{{ user.email }}</h3>
+</div>
+
+<div>
+
+	{% if not user.holidays.all %}
+		No holiday taken
+	{% endif %}
+	<table class="holidaysTable">
+		{% for holiday in user.holidays.all %}
+			<tr>
+				<td class="holidaysDate">{{ holiday.start_date }} - {{ holiday.end_date }}</td>
+				<td class="holidaysApproval"><button class="holidaysApprovalBox">APPROVED</td>
+			</tr>
+		{% endfor %}
+	</table>
+</div>
+
+
+
+
 {% endblock %}
 
