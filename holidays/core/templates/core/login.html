@@ -7,7 +7,7 @@
 {% block content %}
 
 <div id="loginBox">
-	<form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+	<form method="post" action="{% url 'login' %}">
 	{% csrf_token %}
 	<table id="loginTable">
 		<tr>

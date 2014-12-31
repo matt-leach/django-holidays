@@ -2,3 +2,7 @@ body {
 	background-color: #E0D6D5;
 }
 
+.content {
+	width:800px; 
+	margin:0 auto;
+}
