@@ -1,10 +1,10 @@
 {% load holiday_utils %}
 
-<h2 class="holidaysYear">2015</h2>
-<h6 class="holidaysRemaining">{{ user|holidays_remaining:2014 }} days of holiday remaining</h6>
+<h2 class="holidaysYear">{{ year }}</h2>
+<h6 class="holidaysRemaining">{{ user|holidays_remaining:year }} days of holiday remaining</h6>
 
 <table class="holidaysTable">
-	{% for holiday in user.holidays.all %}
+	{% for holiday in user.holidays.all|by_year:year %}
 		<tr>
 			<td class="holidaysDate">{{ holiday.start_date }} - {{ holiday.end_date }}</td>
 			<td class="holidaysApproval">
@@ -17,6 +17,10 @@
 					<button class="holidaysButton holidaysRejected">REJECTED</button>
 				{% endif %}
 			</td>
+		</tr>
+	{% empty %}
+		<tr>
+			<td>No holiday taken</td>
 		</tr>
 	{% endfor %}
 </table>

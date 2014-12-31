@@ -8,3 +8,7 @@ register = template.Library()
 @register.filter
 def holidays_remaining(user, year):
     return holidays_remaining_fn(user, year)
+
+@register.filter
+def by_year(hols_qs, year):
+    return hols_qs.filter(start_date__year=year)

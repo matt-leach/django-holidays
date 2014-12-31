@@ -10,14 +10,17 @@
 
 <div>
 
-	{% if not user.holidays.all %}
-		No holiday taken
-	{% endif %}
 	
-	{% include "holidays/holidayTable.html" %}
 	
+	{% with year=2015 %}
+		{% include "holidays/holidayTable.html" %}
+	{% endwith %}
 </div>
-
+<div>
+	{% with year=2014 %}
+		{% include "holidays/holidayTable.html" %}
+	{% endwith %}
+</div>
 
 
 
