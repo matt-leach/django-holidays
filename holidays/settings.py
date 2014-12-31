@@ -90,3 +90,7 @@ STATIC_ROOT = '/home/django_apps/static/greyhounds/'
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
+
+
+# Holiday config settings
+YEARLY_HOLS = 25

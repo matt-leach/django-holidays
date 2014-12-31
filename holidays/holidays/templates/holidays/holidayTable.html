@@ -1,5 +1,7 @@
+{% load holiday_utils %}
+
 <h2 class="holidaysYear">2015</h2>
-<h6 class="holidaysRemaining">3 days of holiday remaining</h6>
+<h6 class="holidaysRemaining">{{ user|holidays_remaining:2014 }} days of holiday remaining</h6>
 
 <table class="holidaysTable">
 	{% for holiday in user.holidays.all %}
@@ -11,7 +13,7 @@
 				{% elif holiday.approved == None %}
 					<button class="holidaysButton holidaysWaiting">WAITING</button>
 				{% else %}
-					{# False #}
+					{# approved is False #}
 					<button class="holidaysButton holidaysRejected">REJECTED</button>
 				{% endif %}
 			</td>
