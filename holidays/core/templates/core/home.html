@@ -3,28 +3,19 @@
 
 {% block content %}
 <div>
-	<h1>{% if user.first_name or user.last_name %}{{ user.first_name }} {{ user.last_name }}{% else %}{{ user.username }}{% endif %}</h1>
+	<h1>{% if staff.first_name or staff.last_name %}{{ staff.first_name }} {{ staff.last_name }}{% else %}{{ staff.username }}{% endif %}</h1>
 	<h3>{{ user.email }}</h3>
 	<br><br>
 </div>
 
-<div>
-	{% with year=2015 staff=user %}
-		{% include "holidays/holidayTable.html" %}
-	{% endwith %}
-</div>
+{% with year=current_year current=True %}
+	{% include "holidays/holidayTable.html" %}
+{% endwith %}
 
-<div>
-	{% with year=2014 staff=user %}
-		{% include "holidays/holidayShrunk.html" %}
-	{% endwith %}
-</div>
+{% for year in other_years %}
+	{% include "holidays/holidayShrunk.html" %}
+{% endfor %}
 
-<div>
-	{% with year=2013 staff=user %}
-		{% include "holidays/holidayShrunk.html" %}
-	{% endwith %}
-</div>
 
 
 {% endblock %}
