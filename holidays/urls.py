@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from core import views as core_views
+
 urlpatterns = patterns('',
     # Login/logout views
     url(r'^login/$', core_views.login, name="login"),
@@ -9,6 +10,8 @@ urlpatterns = patterns('',
     
     # Main page showing user's information - requires login
     url(r'^$', login_required(redirect_field_name=None)(core_views.HomeView.as_view()), name="home"),
+    
+    url(r'^user/(?P<pk>\d+)/$', login_required(redirect_field_name=None)(core_views.UserDetailView.as_view()), name='user'),
     
     # Holiday views
     url(r'^holidays/', include('holidays.urls')),

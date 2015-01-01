@@ -4,7 +4,7 @@
 	<h6 class="holidaysRemaining">{{ staff|holidays_remaining:year }} days of holiday remaining</h6>
 	
 	<table class="holidaysTable">
-		{% if current %}
+		{% if current and staff == user %}
 			<tr>
 				<td>FORM TBA</td><td></td>
 			</tr>

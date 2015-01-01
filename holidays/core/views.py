@@ -18,21 +18,33 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
         
-        # This can easily fail
         context['staff'] = self.request.user
+        context['current_year'] = 2015
+        context["other_years"] = [2014, 2013]
+
+        return context
+
+
+
+   
+    
+class UserDetailView(DetailView):
+    model = User
+    template_name = "core/home.html"
+    context_object_name = 'staff'
+    
+    def get_context_data(self, **kwargs):
+        context = super(UserDetailView, self).get_context_data(**kwargs)
+        
         context['current_year'] = 2015
         context["other_years"] = [2014, 2013]
 
         return context
     
     
-class UserDetailView(DetailView):
-    model = User
-    template_name = "core/user_page.html"
-    
-    
 class MeView(View):
     
     def dispatch(self, request):
         return HttpResponse("<p>User</p>")
+    
     
