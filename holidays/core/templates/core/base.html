@@ -14,7 +14,17 @@
 </head>
 
 <body>
+	<div id="topbar">
+		{% block topbar %}
+			<h2>Holidays</h2>
+			{% if user.is_authenticated %}
+				{{ user.username }} {% if user.email %} ({{user.email}}) {% endif %}
+				<button><a href="{% url 'logout' %}">LOGOUT</a></button>
+			{% endif %}
 
+		{% endblock %}
+	</div>
+	
 	<div class="content">
 		{% block content %}
 		{% endblock %}

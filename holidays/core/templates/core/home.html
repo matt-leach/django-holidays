@@ -4,11 +4,11 @@
 	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/user.css">
 {% endblock %}
 
+
 {% block content %}
 <div>
 	<h1>{% if staff.first_name or staff.last_name %}{{ staff.first_name }} {{ staff.last_name }}{% else %}{{ staff.username }}{% endif %}</h1>
 	<h3>{{ staff.email }}</h3>
-	<br><br>
 </div>
 
 {% with year=current_year current=True %}

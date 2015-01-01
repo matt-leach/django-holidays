@@ -6,7 +6,7 @@ from core import views as core_views
 urlpatterns = patterns('',
     # Login/logout views
     url(r'^login/$', core_views.login, name="login"),
-    url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/login'}),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/login'}, name="logout"),
     
     # Main page showing user's information - requires login
     url(r'^$', login_required(redirect_field_name=None)(core_views.HomeView.as_view()), name="home"),
