@@ -1,10 +1,10 @@
 {% load holiday_utils %}
 
 <h2 class="holidaysYear">{{ year }}</h2>
-<h6 class="holidaysRemaining">{{ user|holidays_remaining:year }} days of holiday remaining</h6>
+<h6 class="holidaysRemaining">{{ staff|holidays_remaining:year }} days of holiday remaining</h6>
 
 <table class="holidaysTable">
-	{% for holiday in user.holidays.all|by_year:year %}
+	{% for holiday in staff.holidays.all|by_year:year %}
 		<tr>
 			{% if holiday.start_date == holiday.end_date %}
 				<td class="holidaysDate">{{ holiday.start_date|date:"D d M" }}</td>

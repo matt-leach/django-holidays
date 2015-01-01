@@ -1,0 +1,22 @@
+{% load holiday_utils %}
+
+<h2 class="holidaysYear">{{ year }}</h2>
+<h6 class="holidaysRemaining">{{ staff|holidays_remaining:year }} days of holiday remaining</h6>
+
+<table class="holidaysTable">
+	<tr class="empty" onclick="loadHolidays({{ year }});">
+		<td></td>
+	</tr>
+	<tr class="empty" onclick="loadHolidays({{ year }});">
+		<td></td>
+	</tr>
+	<tr class="empty" onclick="loadHolidays({{ year }});">
+		<td></td>
+	</tr>
+</table>
+
+<script>
+function loadHolidays(year) {
+	alert(year);
+}
+</script>

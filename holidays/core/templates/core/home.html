@@ -9,19 +9,22 @@
 </div>
 
 <div>
-
-	
-	
-	{% with year=2015 %}
+	{% with year=2015 staff=user %}
 		{% include "holidays/holidayTable.html" %}
 	{% endwith %}
 </div>
+
 <div>
-	{% with year=2014 %}
+	{% with year=2014 staff=user %}
 		{% include "holidays/holidayTable.html" %}
 	{% endwith %}
 </div>
 
+<div>
+	{% with year=2013 staff=user %}
+		{% include "holidays/holidayShrunk.html" %}
+	{% endwith %}
+</div>
 
 
 {% endblock %}
