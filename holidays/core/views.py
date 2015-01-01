@@ -40,11 +40,6 @@ class UserDetailView(DetailView):
         context["other_years"] = [2014, 2013]
 
         return context
-    
-    
-class MeView(View):
-    
-    def dispatch(self, request):
-        return HttpResponse("<p>User</p>")
+
     
     
