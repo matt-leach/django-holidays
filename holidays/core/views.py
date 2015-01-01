@@ -5,7 +5,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.views import login as dj_login
 
 def login(request):
-    if request.user:
+    if request.user.is_authenticated():
         # User is already logged in
         return redirect("/")
     

@@ -6,7 +6,11 @@
 <table class="holidaysTable">
 	{% for holiday in user.holidays.all|by_year:year %}
 		<tr>
-			<td class="holidaysDate">{{ holiday.start_date }} - {{ holiday.end_date }}</td>
+			{% if holiday.start_date == holiday.end_date %}
+				<td class="holidaysDate">{{ holiday.start_date|date:"D d M" }}</td>
+			{% else %}
+				<td class="holidaysDate">{{ holiday.start_date|date:"D d M" }} - {{ holiday.end_date|date:"D d M" }}</td>
+			{% endif %}
 			<td class="holidaysApproval">
 				{% if holiday.approved %}
 					<button class="holidaysButton holidaysApproved">APPROVED</button>
