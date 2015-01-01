@@ -11,4 +11,4 @@ def holidays_remaining(user, year):
 
 @register.filter
 def by_year(hols_qs, year):
-    return hols_qs.filter(start_date__year=year)
+    return hols_qs.filter(start_date__year=year).order_by("-start_date")

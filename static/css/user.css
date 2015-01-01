@@ -47,7 +47,7 @@
 	margin: 4px;
 }
 
-#holidaySubmit {
+.holidaySubmit {
 	background-color: #3CD670;
 	color: black;
 	height: 42px;
@@ -57,6 +57,16 @@
 	font-size: 15px;
 	border-radius: 30px;
 }
+
+.holidaySubmitFail {
+	background-color: red;
+}
+
+.errorInfo {
+	font-size: 12px;
+	color: red;
+}
+
 
 #holidaySubmit:hover {
 	background-color: #249E4E;

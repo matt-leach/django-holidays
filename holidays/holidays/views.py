@@ -6,6 +6,7 @@ from django.http import HttpResponseForbidden, HttpResponse
 from django.template.loader import render_to_string
 
 from holidays.models import Holiday
+from holidays.utils import convert_date
 
 THIS_YEAR = 2015
 
@@ -42,12 +43,40 @@ def add_holiday(request):
         start_date = request.POST.get("start_date")
         end_date = request.POST.get("end_date")
         
-        hol = Holiday(start_date=start_date, end_date=end_date, user=user)
-        
-        hol.save()
-        
         context = {"staff": user, "year": THIS_YEAR, "current": True, "user": user}
+        
+        start_fail, end_fail = False, False
+        try:
+            start_date = convert_date(start_date)
+        except ValueError:
+            start_fail = True
+
+        try:
+            end_date = convert_date(end_date)
+        except ValueError:
+            end_fail = True
+            
+        if not start_fail or not end_fail:
+            hol = Holiday(start_date=start_date, end_date=end_date, user=user)
+            hol.save()
+            
+        else:            
+            context["end_fail"] = start_fail
+            context["start_date"] = start_date
+            context["start_fail"] = end_fail
+            context["end_date"] = end_date
+        
+        print context
         
         return HttpResponse(json.dumps(render_to_string("holidays/holidayTable.html", context)), content_type="application/json")
     else:
         return HttpResponseForbidden()
+    
+    
+    
+    
+    
+    
+    
+    
+    

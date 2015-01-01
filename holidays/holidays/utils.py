@@ -20,3 +20,16 @@ def holidays_remaining(user, year):
         
     
     
+def convert_date(date):
+    """
+    Converts from dd/mm/yyyy to yyyy-mm-dd
+    
+    Raises ValueError if fails
+    """
+    import datetime
+    try:
+        d = datetime.datetime.strptime(date, '%d/%m/%Y')
+        return d.strftime('%Y-%m-%d')
+    
+    except:
+        raise ValueError

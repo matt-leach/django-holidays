@@ -2,12 +2,17 @@
 	<form method="post" action="javascript:submitHoliday({{staff.id}}, {{year}});" id="holiday-form">
 		{% csrf_token %}
 		<td>
-			<input  class="dateInput" id="id_start_date" maxlength="254" name="start_date" type="text" placeholder="Start Date">
+			<input  class="dateInput" id="id_start_date" maxlength="254" name="start_date" type="text" placeholder="Start Date (dd/mm/yyyy)">
 			-
-			<input class="dateInput" id="id_end_date" maxlength="254" name="end_date" type="text" placeholder="End Date">
+			<input class="dateInput" id="id_end_date" maxlength="254" name="end_date" type="text" placeholder="End Date (dd/mm/yyyy)">
 		</td>
 		<td class="holidaysApproval">
-			<input type="submit" value="&#10004;" id="holidaySubmit"/>
+			{% if end_fail or start_fail %}
+				<p><span class="errorInfo">Please enter a start and end date in the correct format</span>
+				<input type="submit" value="&#10004;" id="holidaySubmit" class="holidaySubmit holidaySubmitFail"/>
+			{% else %}
+				<input type="submit" value="&#10004;" id="holidaySubmit" class="holidaySubmit"/>
+			{% endif %}
 		</td>
 	</form>
 </tr>
