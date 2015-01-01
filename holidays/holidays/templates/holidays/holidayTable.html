@@ -2,19 +2,9 @@
 <div id="holidays_{{ staff.id }}_{{ year }}">
 	<h2 class="holidaysYear">{{ year }}</h2>
 	<h6 class="holidaysRemaining">{{ staff|holidays_remaining:year }} days of holiday remaining</h6>
-	
 	<table class="holidaysTable">
 		{% if current and staff == user %}
-			<tr>
-				<td>
-					<input  class="dateInput" id="id_start_date" maxlength="254" name="start_date" type="text" placeholder="Start Date">
-					-
-					<input class="dateInput" id="id_end_date" maxlength="254" name="end_date" type="text" placeholder="End Date">
-				</td>
-				<td class="holidaysApproval">
-					<input type="submit" value="&#10004;" id="holidaySubmit"/>
-				</td>
-			</tr>
+			{% include "holidays/holidayAddForm.html" %}
 		{% endif %}
 		
 		{% for holiday in staff.holidays.all|by_year:year %}

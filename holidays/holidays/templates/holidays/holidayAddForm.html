@@ -1,0 +1,13 @@
+<tr>
+	<form method="post" action="javascript:submitHoliday({{staff.id}}, {{year}});" id="holiday-form">
+		{% csrf_token %}
+		<td>
+			<input  class="dateInput" id="id_start_date" maxlength="254" name="start_date" type="text" placeholder="Start Date">
+			-
+			<input class="dateInput" id="id_end_date" maxlength="254" name="end_date" type="text" placeholder="End Date">
+		</td>
+		<td class="holidaysApproval">
+			<input type="submit" value="&#10004;" id="holidaySubmit"/>
+		</td>
+	</form>
+</tr>

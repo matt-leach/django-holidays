@@ -4,30 +4,14 @@
 	<h6 class="holidaysRemaining">{{ staff|holidays_remaining:year }} days of holiday remaining</h6>
 	
 	<table class="holidaysTable">
-		<tr class="empty" onclick="loadHolidays({{ year }});">
+		<tr class="empty" onclick="loadHolidays({{staff.id}}, {{year}});">
 			<td></td>
 		</tr>
-		<tr class="empty" onclick="loadHolidays({{ year }});">
+		<tr class="empty" onclick="loadHolidays({{staff.id}}, {{year}});">
 			<td></td>
 		</tr>
-		<tr class="empty" onclick="loadHolidays({{ year }});">
+		<tr class="empty" onclick="loadHolidays({{staff.id}}, {{year}});">
 			<td></td>
 		</tr>
 	</table>
 </div>
-
-<script>
-function loadHolidays(year) {
-	$.ajax({
-    url: '/holidays/getYearly/',
-    data: {"year": year, "userid": {{ staff.id }}},
-    type: 'get', 
-    success: function(data) {   
-        $("#holidays_{{ staff.id }}_" + year).replaceWith(data);
-    },
-    failure: function(data) { 
-        alert('Got an error dude');
-    }
-}); 
-}
-</script>
