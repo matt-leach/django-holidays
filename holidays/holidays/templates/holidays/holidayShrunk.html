@@ -1,22 +1,33 @@
 {% load holiday_utils %}
-
-<h2 class="holidaysYear">{{ year }}</h2>
-<h6 class="holidaysRemaining">{{ staff|holidays_remaining:year }} days of holiday remaining</h6>
-
-<table class="holidaysTable">
-	<tr class="empty" onclick="loadHolidays({{ year }});">
-		<td></td>
-	</tr>
-	<tr class="empty" onclick="loadHolidays({{ year }});">
-		<td></td>
-	</tr>
-	<tr class="empty" onclick="loadHolidays({{ year }});">
-		<td></td>
-	</tr>
-</table>
+<div id="holidays_{{ staff.id }}_{{ year }}">
+	<h2 class="holidaysYear">{{ year }}</h2>
+	<h6 class="holidaysRemaining">{{ staff|holidays_remaining:year }} days of holiday remaining</h6>
+	
+	<table class="holidaysTable">
+		<tr class="empty" onclick="loadHolidays({{ year }});">
+			<td></td>
+		</tr>
+		<tr class="empty" onclick="loadHolidays({{ year }});">
+			<td></td>
+		</tr>
+		<tr class="empty" onclick="loadHolidays({{ year }});">
+			<td></td>
+		</tr>
+	</table>
+</div>
 
 <script>
 function loadHolidays(year) {
-	alert(year);
+	$.ajax({
+    url: '/holidays/getYearly/',
+    data: {"year": year, "userid": {{ staff.id }}},
+    type: 'get', 
+    success: function(data) {   
+        $("#holidays_{{ staff.id }}_" + year).replaceWith(data);
+    },
+    failure: function(data) { 
+        alert('Got an error dude');
+    }
+}); 
 }
 </script>

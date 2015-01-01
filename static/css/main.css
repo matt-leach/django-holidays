@@ -42,7 +42,19 @@ h3 {
 .holidaysTable tr {
 	height: 50px;
 	background-color: white;
-	
+}
+
+.holidaysTable .empty {
+	background-color: white;
+	height: 10px;
+}
+
+.holidaysTable .empty:hover {
+	cursor: pointer;
+}
+
+.holidaysApproval {
+	width: 250px;
 }
 
 .holidaysButton {
